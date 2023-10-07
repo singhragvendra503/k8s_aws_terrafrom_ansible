@@ -1,0 +1,8 @@
+---
+- name: Set executable permission for the script
+  hosts: k8s_master
+  tasks:
+    - name: Set executable permission
+      command: chmod +x ~/k8s_master_dependencies.sh
+    - name: Run the shell script
+      shell: ~/k8s_master_dependencies.sh

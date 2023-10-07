@@ -1,0 +1,11 @@
+# Import play books
+- name: Copy script files
+  import_playbook: copy_script.yaml
+- name: Install Kubernetes Dependencies 
+  import_playbook: k8s_comman_dependencies.yaml
+- name: Initialaize Kubernetes Master 
+  import_playbook: k8s_master_dependencies.yaml
+- name: Get token from master and join workers 
+  import_playbook: join_worker_node.yaml
+- name: Delete Scripts from All servers
+  import_playbook: delete_script.yaml

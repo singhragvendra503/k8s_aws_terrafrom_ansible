@@ -1,0 +1,16 @@
+---
+- name: Copy and Run Shell Scripts
+  hosts: all
+  tasks:
+    - name: Copy k8s_comman_dependencies.sh to all servers
+      copy:
+        src: k8s_comman_dependencies.sh   #Replace path with your path where you clone code
+        dest: /home/ubuntu/
+
+    - name: Copy k8s_master_dependencies.sh to master servers
+      copy:
+        src: k8s_master_dependencies.sh   #Replace path with your path where you clone code
+        dest: /home/ubuntu/
+      when: "'k8s_master' in group_names"
+
+

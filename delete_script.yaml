@@ -1,0 +1,14 @@
+---
+- name: Delete Scripts from Servers
+  hosts: all
+  tasks:
+    - name: Delete k8s_comman_dependencies.sh from all servers
+      ansible.builtin.file:
+        path: /home/ubuntu/k8s_comman_dependencies.sh
+        state: absent
+
+    - name: Delete k8s_master_dependencies.sh from master server
+      ansible.builtin.file:
+        path: /home/ubuntu/k8s_master_dependencies.sh
+        state: absent
+      when: "'k8s_master' in group_names"
